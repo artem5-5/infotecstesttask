@@ -1,0 +1,7 @@
+@import './../../node_modules/reset-css/sass/reset';
+@import './vars';
+
+body {
+  background: $white;
+  font-family: $defaultFontFamily;
+}

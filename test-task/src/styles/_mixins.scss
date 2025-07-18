@@ -1,0 +1,45 @@
+@import './vars';
+@import '../../node_modules/include-media/dist/_include-media';
+
+@mixin link($color: $blue, $hoverColor: $red) {
+  color: $color;
+  transition: color 200ms ease;
+
+  &:hover,
+  &:active {
+    color: $hoverColor;
+    transition: none;
+  }
+}
+
+@mixin h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+@mixin h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+@mixin title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+@mixin description {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+@mixin wrapper {
+  width: 600px;
+  border: $defaultBorder;
+  border-style: $defaultBorderStyle;
+  border-radius: $defaultBorderRadius;
+  border-color: $black;
+  margin-bottom: 10px;
+  @include media($breakpoint) {
+    width: 400px;
+  }
+}
