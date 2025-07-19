@@ -1,7 +1,8 @@
+import css from './index.module.scss'
+
 export const UsersTable = (props) => {
   return (
-    <div>
-      <h1>ТАБЛИЦА ПОЛЬЗОВАТЕЛЕЙ</h1>
+    <div className={css.wrapper}>
       <table>
         <thead>
           <tr>

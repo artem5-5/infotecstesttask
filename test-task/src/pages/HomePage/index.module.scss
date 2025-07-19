@@ -1,0 +1,10 @@
+@import '../../styles/_vars';
+@import '../../styles/_mixins';
+
+.wrapper{
+    justify-items: center;
+    .title{
+        @include title;
+        padding: 20px;
+    }
+}
