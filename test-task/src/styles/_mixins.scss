@@ -1,17 +1,6 @@
 @import './vars';
 @import '../../node_modules/include-media/dist/_include-media';
 
-@mixin link($color: $blue, $hoverColor: $red) {
-  color: $color;
-  transition: color 200ms ease;
-
-  &:hover,
-  &:active {
-    color: $hoverColor;
-    transition: none;
-  }
-}
-
 @mixin h1 {
   font-size: 30px;
   font-weight: bold;
@@ -31,6 +20,29 @@
 @mixin head {
   font-size: 16px;
   font-weight: lighter;
+}
+
+@mixin header {
+  width: 100%;
+  min-height: 10vh;
+  left: 0;
+  right: 0;
+  background-color: $mainColor;
+  margin-bottom: 20px;
+  border-bottom: 3px solid rgba($black, 0.5);
+  justify-items: center;
+}
+
+@mixin footer {
+  width: 100%;
+  min-height: 10vh;
+  background-color: $mainColorDark;
+}
+
+@mixin default-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: $black;
 }
 
 @mixin wrapper {

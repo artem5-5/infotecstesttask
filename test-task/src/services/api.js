@@ -1,6 +1,6 @@
 export const fetchUsersData = async () => {
   try {
-    const response = await fetch('https://dummyjson.com/users')
+    const response = await fetch('https://dummyjson.com/users?limit=100')
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`)
     }

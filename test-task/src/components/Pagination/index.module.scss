@@ -1,0 +1,41 @@
+@import '../../styles/_vars';
+@import '../../styles/_mixins';
+
+.container {
+  justify-items: center;
+  .info {
+    @include default-text;
+    margin: 5px;
+  }
+  button {
+    width: 40px;
+    height: 30px;
+    margin: 1px;
+    background-color: $mainColor;
+    border-radius: 3px;
+    color: $white;
+    &:hover {
+      background-color: $mainColorDark;
+      cursor: pointer;
+    }
+  }
+  .ellipsis {
+    @include default-text;
+  }
+  .sizeSelector {
+    margin: 5px;
+    border: 2px solid $black;
+    border-radius: 3px;
+    padding: 5px;
+    select {
+      width: 40px;
+      height: 30px;
+      background-color: $mainColor;
+      color: $white;
+      border-radius: 3px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

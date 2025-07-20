@@ -1,10 +1,28 @@
 @import '../../styles/_vars';
 @import '../../styles/_mixins';
 
-.wrapper{
-    justify-items: center;
-    .title{
-        @include title;
-        padding: 20px;
+.container {
+  justify-items: center;
+  min-width: 1400px;
+  header {
+    @include header;
+    .title {
+      @include title;
+      padding: 20px;
     }
+  }
+  .content {
+    min-height: 80vh;
+  }
+  footer {
+    @include footer;
+    align-content: center;
+    .description {
+        margin-left: 20px;
+       p {
+        @include default-text;
+        color: $white;
+      }
+    }
+  }
 }
