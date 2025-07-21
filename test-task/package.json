@@ -25,7 +25,7 @@
     "preview": "vite preview",
     "prettify": "prettier --loglevel warn --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}' '!**/{node_modules,dist}/**/*'"
   },
-  "homepage": "https://artem5-5.github.io/infotecstesttask/",
+  "homepage": "https://artem5-5.github.io/infotecs-test-task/",
   "eslintConfig": {
     "extends": [
       "react-app",
