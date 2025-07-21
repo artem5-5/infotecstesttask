@@ -4,7 +4,7 @@ import './styles/global.scss'
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/infotecstesttask">
       <Routes>
         <Route element={<HomePage />} path='/'></Route>
       </Routes>
