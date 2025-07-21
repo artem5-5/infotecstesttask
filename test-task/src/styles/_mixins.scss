@@ -28,8 +28,6 @@
   left: 0;
   right: 0;
   background-color: $mainColor;
-  margin-bottom: 20px;
-  border-bottom: 3px solid rgba($black, 0.5);
   justify-items: center;
 }
 
@@ -54,4 +52,9 @@
   @include media($breakpoint) {
     width: 400px;
   }
+}
+
+@mixin container {
+  justify-items: center;
+  min-width: 1400px;
 }

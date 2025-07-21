@@ -28,6 +28,31 @@
             background-color: $mainColorDark;
             cursor: pointer;
           }
+          .resizer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #3498db;
+            cursor: col-resize;
+            opacity: 0;
+            transition: opacity 0.2s;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+          th:hover .resizer {
+            opacity: 0.5;
+          }
+          .resizing {
+            .resizer {
+              opacity: 1;
+              background-color: #2980b9;
+            }
+          }
         }
       }
     }

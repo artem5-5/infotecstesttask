@@ -1,0 +1,10 @@
+@import '../../styles/_vars';
+@import '../../styles/_mixins';
+
+header {
+  @include header;
+  .title {
+    @include title;
+    padding: 20px;
+  }
+}

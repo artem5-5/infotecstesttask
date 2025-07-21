@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import { UsersTable } from './../../components/UsersTable'
 import { fetchUsersData } from './../../services/api'
 import { Pagination } from './../../components/Pagination'
-import css from './index.module.scss'
 import { UserModal } from '../../components/UserModal'
+import { Footer } from '../../components/Footer'
+import { Header } from '../../components/Header'
+import css from './index.module.scss'
 
 export const HomePage = () => {
   const [users, setUsers] = useState([])
@@ -15,15 +17,15 @@ export const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const columns = [
-    { key: 'lastName', value: 'ФАМИЛИЯ' },
-    { key: 'firstName', value: 'ИМЯ' },
-    { key: 'maidenName', value: 'ОТЧЕСТВО' },
-    { key: 'age', value: 'ВОЗРАСТ' },
-    { key: 'gender', value: 'ПОЛ' },
-    { key: 'phone', value: 'ТЕЛЕФОН' },
-    { key: 'email', value: 'EMAIL' },
-    { key: 'country', value: 'СТРАНА' },
-    { key: 'city', value: 'ГОРОД' },
+    { key: 'firstName', value: 'ИМЯ', sortable: true },
+    { key: 'lastName', value: 'ФАМИЛИЯ', sortable: true },
+    { key: 'maidenName', value: 'ОТЧЕСТВО', sortable: true },
+    { key: 'age', value: 'ВОЗРАСТ', sortable: true },
+    { key: 'gender', value: 'ПОЛ', sortable: true },
+    { key: 'phone', value: 'ТЕЛЕФОН', sortable: true },
+    { key: 'email', value: 'EMAIL', sortable: false },
+    { key: 'country', value: 'СТРАНА', sortable: false },
+    { key: 'city', value: 'ГОРОД', sortable: false },
   ]
 
   const totalItems = users.length
@@ -56,6 +58,8 @@ export const HomePage = () => {
         setUsers(data)
       } catch (error) {
         setError('Ошибка загрузки данных')
+      } finally {
+        setLoading(false)
       }
     }
     loadData()
@@ -63,12 +67,13 @@ export const HomePage = () => {
 
   return (
     <div className={css.container}>
-      <header>
-        <h1 className={css.title}>ТАБЛИЦА ПОЛЬЗОВАТЕЛЕЙ</h1>
-      </header>
+      <Header />
       <div className={css.content}>
         <UsersTable users={paginatedUsers} columns={columns} onRowClick={handleRowClick} />
+        {error && <div>Что-то пошло не так, попробуйте перезагрузить страницу</div>}
+        {loading && <div>Загрузка данных ...</div>}
         <Pagination
+          users={users}
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
@@ -78,12 +83,7 @@ export const HomePage = () => {
         />
         {isModalOpen && <UserModal user={selectedUser} onClose={closeModal} />}
       </div>
-
-      <footer>
-        <div className={css.description}>
-          <p>Тестовое задание для прохождения стажировки на позицию Разработчик JS</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

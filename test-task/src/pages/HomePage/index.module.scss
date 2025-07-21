@@ -3,26 +3,10 @@
 
 .container {
   justify-items: center;
+  text-align: center;
   min-width: 1400px;
-  header {
-    @include header;
-    .title {
-      @include title;
-      padding: 20px;
-    }
-  }
   .content {
     min-height: 80vh;
-  }
-  footer {
-    @include footer;
-    align-content: center;
-    .description {
-        margin-left: 20px;
-       p {
-        @include default-text;
-        color: $white;
-      }
-    }
+    margin-top: 20px;
   }
 }

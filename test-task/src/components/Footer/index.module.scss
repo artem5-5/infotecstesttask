@@ -1,0 +1,15 @@
+@import '../../styles/_vars';
+@import '../../styles/_mixins';
+
+footer {
+    @include footer;
+    align-content: center;
+    text-align: left;
+    .description {
+        margin-left: 20px;
+       p {
+        @include default-text;
+        color: $white;
+      }
+    }
+  }

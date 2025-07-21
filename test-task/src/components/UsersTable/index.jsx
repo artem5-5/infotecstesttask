@@ -1,7 +1,39 @@
-import css from './index.module.scss'
+import { useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
+import { getComparer } from './../../utils/tableSortUtils'
+import css from './index.module.scss'
 
 export const UsersTable = ({ users, columns, onRowClick }) => {
+  const [sortConfig, setSortConfig] = useState({
+    key: null,
+    direction: 'none',
+  })
+
+  const handleSort = (key) => {
+    setSortConfig((prev) => {
+      const column = columns.find((col) => col.key === key)
+
+      if (!column || !column.sortable) {
+        return
+      }
+
+      if (prev.key !== key) {
+        return { key, direction: 'asc' }
+      }
+
+      return {
+        key,
+        direction: prev.direction === 'asc' ? 'desc' : prev.direction === 'desc' ? 'none' : 'asc',
+      }
+    })
+  }
+
+  const sortedUsers = useMemo(() => {
+    if (sortConfig.direction === 'none') return users
+
+    return [...users].sort(getComparer(sortConfig.key, sortConfig.direction))
+  }, [users, sortConfig])
+
   if (!users || users.length === 0) {
     return <div className={css.noData}>Нет данных для отображения</div>
   }
@@ -11,14 +43,18 @@ export const UsersTable = ({ users, columns, onRowClick }) => {
         <thead>
           <tr>
             {columns.map((column) => (
-              <th key={column.key}>
-                <div>{column.value}</div>
+              <th key={column.key} onClick={column.sortable ? () => handleSort(column.key) : undefined}>
+                <div>
+                  {column.value}{' '}
+                  {sortConfig.key === column.key &&
+                    (sortConfig.direction === 'asc' ? ' ↑' : sortConfig.direction === 'desc' ? ' ↓' : '')}
+                </div>
               </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {sortedUsers.map((user) => (
             <tr key={user.id} onClick={() => onRowClick(user)}>
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import css from './index.module.scss'
 
-export const Pagination = ({ currentPage, totalPages, onPageChange, pageSize, totalItems, onPageSizeChange }) => {
+export const Pagination = ({ users, currentPage, totalPages, onPageChange, pageSize, totalItems, onPageSizeChange }) => {
   const getPageNumbers = () => {
     const pages = []
     const maxVisiblePages = 5
@@ -80,6 +80,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange, pageSize, to
           <option value={10}>10</option>
           <option value={20}>20</option>
           <option value={50}>50</option>
+          <option value={users.length}>{users.length}</option>
         </select>
       </div>
     </div>
